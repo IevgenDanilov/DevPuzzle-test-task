@@ -59,3 +59,7 @@
   height: 30px;
   margin-left: 20px;
 }
+
+.modal-title {
+  margin-bottom: 0;
+}

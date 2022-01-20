@@ -1,74 +1,55 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-const UsersList = ({ users, info }) => (
-  <ul className="user-list" onClick={(e) => info(e)}>
-    {users.map(({ id, username, email, address, website }) => (
-      <li id={id} key={id} className="user-card">
-        <h3>User {id}</h3>
-        <hr></hr>
-        <b>Information:</b>
-        <p>username: {username}</p>
-        <p>email: {email}</p>
-        <p>city: {address.city}</p>
-        <p>website: {website}</p>
-        {/* <a href={url} target="_blank" rel="noreferrer noopener">
-            {title}
-          </a> */}
-      </li>
-    ))}
-  </ul>
-);
+import Modal from "./components/modal";
+import UsersList from "./components/usersList";
 
 function App() {
+  const URL = "https://jsonplaceholder.typicode.com";
   const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [postsById, setPostsById] = useState([]);
+  const [isModal, setIsModal] = useState(false);
   const [sortValue, setSortValue] = useState("username");
 
-  const sortByValue = users.sort((a, b) => {
-    console.log(sortValue, typeof sortValue);
-
+  const sortedUsers = [...users];
+  sortedUsers.sort((a, b) => {
     if (sortValue.includes(".")) {
       const arr = sortValue.split(".");
       return a[arr[0]][arr[1]].localeCompare(b[arr[0]][arr[1]]);
     } else return a[sortValue].localeCompare(b[sortValue]);
   });
 
-  users.length && console.log(sortByValue);
-  // useEffect(() => {
-  !users.length &&
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => setUsers(response.data));
-  // .then((response) => console.log(response.data));
-  // }, []);
+  users.length && console.log(sortedUsers);
 
-  // const fetchUsers = () =>
-  //   fetch("https://jsonplaceholder.typicode.com/users").then((response) =>
-  //     response.json()
-  //   );
-  // .then((usersList) => setUsers(usersList));
+  useEffect(() => {
+    axios.get(`${URL}/users`).then((response) => setUsers(response.data));
+    axios.get(`${URL}/posts`).then((response) => setPosts(response.data));
+  }, []);
+  // !users.length &&
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/users")
+  //     .then((response) => setUsers(response.data));
+  // const onOpenModal = (image) => {
+  //   setLargeImageURL(image);
+  // };
 
-  // async function Markup() {
-  //   const usersList = await fetchUsers();
-  //   setUsers(usersList);
-  // }
+  const onCloseModal = (e) => {
+    if (e && e.target.className !== "Overlay") {
+      return null;
+    }
+    setIsModal(false);
+  };
 
-  // Markup();
-
-  // const { name } = users[0];
-
-  // users = usersList();
-
-  // fetchUsers();
-
-  const info = (e) => {
-    // alert(e.target);
-    console.log(e.target.id);
+  const onDoubleClickHandler = (id) => {
+    const postsById = posts.filter((post) => post.userId === id);
+    setUserId(id);
+    setPostsById(postsById);
+    setIsModal(true);
   };
 
   const onChangeHandler = ({ target }) => {
-    console.log(target.value);
     setSortValue(target.value);
   };
 
@@ -89,7 +70,15 @@ function App() {
           <option>website</option>
         </select>
       </div>
-      {users.length > 0 ? <UsersList users={users} info={info} /> : null};
+      {users.length > 0 ? (
+        <UsersList users={sortedUsers} onDouble={onDoubleClickHandler} />
+      ) : null}
+      ;
+      {isModal && (
+        <Modal onClose={onCloseModal} posts={postsById}>
+          <h2 className="modal-title">Posts of user № {userId}</h2>
+        </Modal>
+      )}
     </div>
   );
 }

@@ -1,0 +1,44 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.Modal {
+  /* max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px); */
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  min-height: 60vh;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.posts-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.post {
+  background-color: pink;
+  border-radius: 3px;
+  width: 40%;
+  margin: 10px;
+  padding: 20px;
+}
