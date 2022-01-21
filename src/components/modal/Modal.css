@@ -20,7 +20,7 @@
   min-height: 60vh;
   max-height: 90vh;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
 }
@@ -37,7 +37,7 @@
 
 .post {
   background-color: pink;
-  border-radius: 3px;
+  border-radius: 10px;
   width: 40%;
   margin: 10px;
   padding: 20px;

@@ -54,31 +54,36 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="sorter">
-        <h2>Cards sorted by </h2>
-        <select
-          defaultValue="username"
-          name="sorter"
-          size="1"
-          className="sorter-switcher"
-          onChange={onChangeHandler}
-        >
-          <option selected="selected">name</option>
-          <option>email</option>
-          <option value="address.city">city</option>
-          <option>website</option>
-        </select>
+    <div className="wrapper">
+      <div className="cards-wrapper">
+        <div className="sorter">
+          <h2>Cards sorted by </h2>
+          <select
+            defaultValue="username"
+            name="sorter"
+            size="1"
+            className="sorter-switcher"
+            onChange={onChangeHandler}
+          >
+            <option selected="selected">name</option>
+            <option>email</option>
+            <option value="address.city">city</option>
+            <option>website</option>
+          </select>
+        </div>
+        {users.length > 0 ? (
+          <UsersList users={sortedUsers} onDouble={onDoubleClickHandler} />
+        ) : null}
+
+        {isModal && (
+          <Modal onClose={onCloseModal} posts={postsById}>
+            <h2 className="modal-title">Posts of user № {userId}</h2>
+          </Modal>
+        )}
       </div>
-      {users.length > 0 ? (
-        <UsersList users={sortedUsers} onDouble={onDoubleClickHandler} />
-      ) : null}
-      ;
-      {isModal && (
-        <Modal onClose={onCloseModal} posts={postsById}>
-          <h2 className="modal-title">Posts of user № {userId}</h2>
-        </Modal>
-      )}
+      <div className="cards-wrapper">
+        <h2>Cards included in the database</h2>
+      </div>
     </div>
   );
 }

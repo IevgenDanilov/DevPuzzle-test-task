@@ -39,15 +39,15 @@
 
 .user-card {
   width: 300px;
-  border: solid 1px grey;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
-  margin: 10px;
+  margin-bottom: 20px;
   background: rgb(182, 177, 154);
 }
 
 .user-list {
   list-style: none;
+  padding: 0;
 }
 
 .sorter {
@@ -56,10 +56,25 @@
 }
 
 .sorter-switcher {
-  height: 30px;
   margin-left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  background: rgb(182, 177, 154);
+  border-radius: 3px;
+  border: none;
+  padding: 5px;
 }
 
 .modal-title {
   margin-bottom: 0;
+}
+
+.cards-wrapper {
+  width: 50%;
+  box-shadow: 4px 1px 10px rgba(0, 0, 0, 0.15);
+  padding-left: 100px;
+}
+
+.wrapper {
+  display: flex;
 }
