@@ -1,11 +1,13 @@
-const UsersList = ({ users, onDouble }) => (
+const UsersList = ({ users, onDouble, setId }) => (
   <ul className="user-list">
     {users.map(({ id, username, email, address, website }) => (
       <li
         id={id}
         key={id}
         className="user-card"
+        draggable="true"
         onDoubleClick={() => onDouble(id)}
+        onDragStart={() => setId(id)}
       >
         <h3>User {id}</h3>
         <hr></hr>

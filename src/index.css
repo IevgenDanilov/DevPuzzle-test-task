@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-left: 100px;
+  padding: 0 80px;
+  text-align: center;
 }
 
 code {

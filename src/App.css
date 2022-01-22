@@ -43,6 +43,7 @@
   padding: 10px;
   margin-bottom: 20px;
   background: rgb(182, 177, 154);
+  /* cursor: grab; */
 }
 
 .user-list {
@@ -63,18 +64,56 @@
   border-radius: 3px;
   border: none;
   padding: 5px;
+  cursor: pointer;
 }
 
 .modal-title {
   margin-bottom: 0;
 }
-
+.selected-cards-wrapper,
 .cards-wrapper {
   width: 50%;
-  box-shadow: 4px 1px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 6px 1px 10px rgba(0, 0, 0, 0.15);
   padding-left: 100px;
 }
 
 .wrapper {
   display: flex;
+}
+
+.main-title {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.log-button {
+  border-radius: 5px;
+  border: none;
+  background: rgb(182, 177, 154);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 15px;
+}
+
+.btn-img {
+  padding: 10px 0;
+}
+
+.grab {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.grab.thumbnails-list {
+  cursor: pointer;
+}
+
+.grab:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
 }
