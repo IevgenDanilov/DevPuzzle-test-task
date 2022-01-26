@@ -10,7 +10,6 @@ function App() {
 
   const URL = "https://jsonplaceholder.typicode.com";
   const [login, setLogin] = useState(false);
-  // const [drag, setDrag] = useState(false);
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -99,7 +98,7 @@ function App() {
           {login ? "Log out" : "Log in by google"}
         </button>
       </div>
-      <div className="wrapper grab">
+      <div className="wrapper">
         <div className="cards-wrapper" onDragLeave={() => dragToBaseHandler()}>
           <div className="sorter">
             <h2>Cards sorted by </h2>

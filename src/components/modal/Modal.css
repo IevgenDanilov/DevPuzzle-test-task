@@ -12,11 +12,9 @@
 }
 
 .Modal {
-  /* max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px); */
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 70vw;
   min-height: 60vh;
   max-height: 90vh;
   background-color: #fff;

@@ -4,7 +4,7 @@ const UsersList = ({ users, onDouble, setId }) => (
       <li
         id={id}
         key={id}
-        className="user-card"
+        className="user-card grab"
         draggable="true"
         onDoubleClick={() => onDouble(id)}
         onDragStart={() => setId(id)}
